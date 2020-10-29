@@ -26,13 +26,27 @@ body {
 .box {
 	width:80%;
 	height:22em;
-	background:var(--white-1);
-  margin:10px auto;
+  background:var(--white-1);
+  margin-top: 25px;
   background-position-y: top;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
   border-radius: 24px;
+}
+/*  Idiom [Select] */
+#idiom{
+  position: absolute;
+  right: 2%;
+  top: 10px;
+  height: 45px; 
+  width: 75%;
+  margin-left: 10%;
+  margin-right: 10%;
+  
+}
+#Language{
+  font-family: 'Syne Mono', monospace;  
 }
 
 /* Clock */
@@ -65,7 +79,7 @@ body {
   color:#fff;
   
 }
-
+/* Big Name City */
 #containerNameCity{
   position: relative;
   background: rgba(0, 0, 0, 0.63);
