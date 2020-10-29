@@ -106,7 +106,7 @@ if(location.pathname){
 
 
 //-----Box Top [Bogotá - Default]-----//
-document.addEventListener('mouseover', function(){ 
+SelectCity.addEventListener('mouseout', function(){ 
   
   
   if(SelectCity.value === 'bogotá'){    
