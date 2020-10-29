@@ -203,7 +203,7 @@ function getWeather(nameCity, parameters, weather, icon, temp, humid){
       result.innerHTML = '';
       //Name City
       const Name = files.name;
-      const Country = files.sys.country;      
+      const Country = files.sys.country;  
       Name_City.innerHTML = Name + ' - ' + Country;
 
       //Weather

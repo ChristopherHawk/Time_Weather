@@ -22,10 +22,10 @@ body {
   background: hsl(220, 10%, 12%);
   font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
 }
-/* Top box */
+/*  Box Top */
 .box {
 	width:80%;
-	height:20em;
+	height:22em;
 	background:var(--white-1);
   margin:10px auto;
   background-position-y: top;
