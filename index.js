@@ -4,6 +4,7 @@ const btn = document.getElementById('btn');
 const BoxTop = document.getElementById('boxTop');
 const SelectCity = document.getElementById('selectCity');
 const LanguageSelect = document.getElementById('Language');
+const Idiom = document.getElementById('idiom');
 const bigNameCTY = document.getElementById('bigNameCTY');
 const NameCT1 = document.getElementById('nameCT1');
 const NameCT2 = document.getElementById('nameCT2');
@@ -80,6 +81,7 @@ function select(Dir){
   
 }
 
+//-------Language-------//
 LanguageSelect.addEventListener('change', () =>{
   let urlTop = `http://api.openweathermap.org/data/2.5/weather?q=Bogota,co`;
   let urlLyon = `http://api.openweathermap.org/data/2.5/weather?q=Lyon,fr`;
@@ -97,7 +99,6 @@ LanguageSelect.addEventListener('change', () =>{
   bigNameCTY.innerHTML = SelectCity.value.toUpperCase();
 
 })
-//--------------------//
 
 //-----Reload-----//
 if(location.pathname){
@@ -117,9 +118,6 @@ if(location.pathname){
   bigNameCTY.innerHTML = SelectCity.value.toUpperCase();
 
 }
-
-
-
 
 //-----Box Top [Bogotá - Default]-----//
 SelectCity.addEventListener('mouseout', function(){   
@@ -171,6 +169,53 @@ SelectCity.addEventListener('mouseout', function(){
   bigNameCTY.innerHTML = SelectCity.value.toUpperCase();
    
   getWeather(NameCT1, urlTop, divBogota, iconWeather, Temp1, HumidCity1);
+  
+});
+
+
+Idiom.addEventListener('mouseover', function(){  
+  Idiom.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
+  BoxTop.style.backgroundImage = 'url(img/idioms.png)';
+});
+Idiom.addEventListener('mouseout', function(){  
+  Idiom.style.boxShadow = '';
+  if(SelectCity.value === 'bogotá'){ 
+    BoxTop.style.backgroundImage = 'url(img/bogota.jpg)';   
+
+  }
+  if(SelectCity.value === 'medellín'){    
+    BoxTop.style.backgroundImage = 'url(img/medellin.jpg)';
+
+  }
+  if(SelectCity.value === 'cali'){ 
+    BoxTop.style.backgroundImage = 'url(img/cali.jpg)';
+  }
+  if(SelectCity.value === 'barranquilla'){  
+    BoxTop.style.backgroundImage = 'url(img/barranquilla.jpg)';
+  }
+  if(SelectCity.value === 'cúcuta'){    
+    BoxTop.style.backgroundImage = 'url(img/cucuta.jpg)';
+  }
+  if(SelectCity.value === 'bucaramanga'){  
+    BoxTop.style.backgroundImage = 'url(img/bucaramanga.jpg)';
+  }
+  if(SelectCity.value === 'lyon'){    
+    BoxTop.style.backgroundImage = 'url(img/lyon2.jpg)';
+  }
+  if(SelectCity.value === 'parís'){    
+    BoxTop.style.backgroundImage = 'url(img/paris2.jpg)';
+  }
+  if(SelectCity.value === 'quebec'){    
+    BoxTop.style.backgroundImage = 'url(img/quebec.jpg)';
+  }  
+
+
+});
+
+
+//-----Bogotá-----//
+Bogota.addEventListener('mouseover', function(){  
+  Bogota.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
   
 });
 
