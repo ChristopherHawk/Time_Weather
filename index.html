@@ -1,0 +1,187 @@
+<!-- Title -->
+<title>Time Weather</title>
+<!-- My Css -->
+<link rel="stylesheet" href="index.css">
+<!-- Favicon -->
+<link  rel="icon"   href="img\sol.png" type="image/png" />
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/55bc13bee3.js" crossorigin="anonymous"></script>
+<!-- Google Font Inconsolata -->
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
+<!-- Google Font Syne Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+
+<!-- [Top container] -->
+<div class="box" id="boxTop">
+ 
+    <!-- Clock -->
+    <div id="clockContainer" ><i class="far fa-clock" id="clockIcon"></i><p id="clock"></p></div>
+    <!-- Big Name City -->
+    <div id="containerNameCity" > <p id="bigNameCTY"></p> </div>
+    <!-- Bogotá [flip-card-container] -->
+    <div class="flip-card-container" id="bogota" style="--hue: 220">
+      <!-- Bogotá -->
+        <div class="card">
+          <figure>
+            
+            <img src="" id="iconWeather">
+            <figcaption><p id="nameCT1"></p></p></figcaption>
+          </figure>
+          
+          <ul>
+            <li id="divBogota"></li>
+            <li id="temp1"></li>
+            <li id="humidity1"></li>
+            <li><div class="select">
+              <select  id="selectCity">
+                <option value="bogotá">Bogotá</option>
+                <option value="medellín">Medellín</option>
+                <option value="cali">Cali</option>
+                <option value="bucaramanga">Bucaramanga</option>
+                <option value="cúcuta">Cúcuta</option>
+                <option value="barranquilla">Barranquilla</option>
+                <option>----------------------------</option>
+                <option value="parís">París - FR</option>
+                <option value="lyon">Lyon - FR</option>                
+                <option value="quebec">Quebec - CA</option>                
+              </select>
+            </div></li>            
+          </ul>
+          
+        </div> 
+    </div>  
+</div>
+
+<!-- Lyon [flip-card-container] -->
+<div class="flip-card-container" id="lyon" style="--hue: 170">
+  <div class="flip-card">
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="img/lyon2.jpg">
+        <figcaption><i class="fas fa-map-marker-alt"></i> Lyon - Francia</figcaption>
+      </figure>
+      <img src="" id="iconWeather2">
+      <ul>
+        <li id="divLyon"></li>
+        <li id="temp2"></li>
+        <li id="humidity2"></li>        
+      </ul>
+    </div>
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="img/lyon.jpg">
+      </figure>
+
+      <button id="nameCT2"></button>
+
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- París [flip-card-container] -->
+<div class="flip-card-container" id="paris" style="--hue: 350">
+  <div class="flip-card">
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="img/paris2.jpg">
+        <figcaption><i class="fas fa-map-marker-alt" ></i> París - Francia</figcaption>
+      </figure>
+
+      <img src="" id="iconWeather3">
+      <ul>        
+        <li id="divParis"></li>
+        <li id="temp3"></li>
+        <li id="humidity3"></li>
+      </ul>
+    </div>
+
+    <div class="card-front">
+      <!-- only if the image is necessary -->
+      <figure>
+        <div class="img-bg"></div>
+        <img src="img/paris.jpg">
+      </figure>
+
+      <button id="nameCT3"></button>
+
+      <!-- can add svg here and remove these eight spans -->
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Quebec [flip-card-container] -->
+<div class="flip-card-container" id="quebec" style="--hue: 350">
+  <div class="flip-card">
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="img\quebec2.jpg">
+        <figcaption><i class="fas fa-map-marker-alt" ></i> Quebec - Canadá</figcaption>
+      </figure>
+
+      <img src="" id="iconWeather4">
+      <ul>        
+        <li id="divQuebec"></li>
+        <li id="temp4"></li>
+        <li id="humidity4"></li>
+      </ul>
+    </div>
+
+    <div class="card-front">
+      <!-- only if the image is necessary -->
+      <figure>
+        <div class="img-bg"></div>
+        <img src="img\quebec.jpg">
+      </figure>
+
+      <button id="nameCT4"></button>
+
+      <!-- can add svg here and remove these eight spans -->
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- My Javascript -->
+<script src="index.js"></script>
