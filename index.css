@@ -133,6 +133,7 @@ body {
   background-size: cover;
   overflow: hidden;
   border-radius: 24px;
+  box-shadow:  inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255);
 }
 #modalSettings h1,h3{ 
   text-align: center;
@@ -166,8 +167,9 @@ body {
 #addNewCity{
   margin-top: 10px;
   margin-left: 110px;
-  background: rgb(34, 175, 41);
-  color: rgb(255, 255, 255);
+  width: 65px;
+  background: rgb(34, 158, 175);
+  color: rgb(26, 26, 26);
   position: relative;
   border-radius: .25em;
   

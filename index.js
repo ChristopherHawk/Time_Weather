@@ -176,7 +176,7 @@ SelectCity.addEventListener('mouseout', function(){
   
 });
 
-
+//-----Preferences [Settings ]-----//
 Idiom.addEventListener('mouseover', function(){  
   Idiom.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
   BoxTop.style.backgroundImage = 'url(img/idioms.png)';
@@ -215,6 +215,27 @@ Idiom.addEventListener('mouseout', function(){
 
 
 });
+CityInput.addEventListener('mouseover', function(){  
+  CityInput.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
+  
+});
+CityInput.addEventListener('mouseout', function(){  
+  CityInput.style.boxShadow = '';  
+});
+CountryInput.addEventListener('mouseover', function(){  
+  CountryInput.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
+  
+});
+CountryInput.addEventListener('mouseout', function(){  
+  CountryInput.style.boxShadow = '';  
+});
+AddNewCity.addEventListener('mouseover', function(){  
+  AddNewCity.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
+  
+});
+AddNewCity.addEventListener('mouseout', function(){  
+  AddNewCity.style.boxShadow = '';  
+});
 
 
 //-----Bogotá-----//
@@ -252,11 +273,30 @@ Quebec.addEventListener('mouseout', function(){
 //-------------[NEW CITY]------------//
 AddNewCity.addEventListener('click', function() {
 
-  //----------Input values-----------// 
-   var country = CountryInput.value;
+  //----------Input values-----------//
+  var country = CountryInput.value; 
+  var city = CityInput.value; 
+  //----------Validation Input-----------//
+  if(city === ''){
+     if(LanguageSelect.value === '&lang=es'){
+      alert(`El campo '${CityInput.placeholder}' es fundamental para agregar una ciudad.`);     
+    }
+    if(LanguageSelect.value === '&lang=fr'){
+      alert(`Le champ '${CityInput.placeholder}' est essentiel pour pour ajouter une ville.`); 
+    }return
+   
+  }
+  if(country === '' ){
+    if(LanguageSelect.value === '&lang=es'){
+      alert(`El campo '${CountryInput.placeholder}' es fundamental para agregar una ciudad.`)     
+    }
+    if(LanguageSelect.value === '&lang=fr'){
+      alert(`Le champ '${CountryInput.placeholder}' est essentiel pour pour ajouter une ville.`); 
+    }return   
+    
+  }
+  
    var fullCountry = country[0].toUpperCase() + country.slice(1)
-   var city = CityInput.value;  
-   //---------------------// 
    var countryName = country[0].toLowerCase() + country[1].toLowerCase(); 
    var cityName =  city[0].toUpperCase() + city.slice(1);   
    var newUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryName}`;
@@ -264,7 +304,7 @@ AddNewCity.addEventListener('click', function() {
     
  
     
-    window.location.href ='#'
+  
     
     
      var nameContainer = `div${cityName}`;
@@ -284,7 +324,7 @@ AddNewCity.addEventListener('click', function() {
        <div class="card-back">
          <figure>
            <div class="img-bg"></div>
-           <img src="img/quebec2.jpg">
+           <img src="img/${cityName}2.jpg">
            <figcaption><i class="fas fa-map-marker-alt" ></i> ${cityName} - ${fullCountry}</figcaption>
          </figure>
    
@@ -300,7 +340,7 @@ AddNewCity.addEventListener('click', function() {
          <!-- only if the image is necessary -->
          <figure>
            <div class="img-bg"></div>
-           <img src="img/quebec.jpg">
+           <img src="img/${cityName}.jpg">
          </figure>
    
          <button id="${cityName}"></button>
@@ -320,17 +360,19 @@ AddNewCity.addEventListener('click', function() {
    
      </div>
    </div>`
-   
- 
+
+  
+  
    if(NEWCARD.innerHTML != ''){
-     //getWeather(cityName, newUrl, nameContainer, iconWeatherContainer, tempContainer, humidityContainer);
+     getWeather(cityName, newUrl, nameContainer, iconWeatherContainer, tempContainer, humidityContainer);
+     iconWeatherContainer.setAttribute("src", '');  
      console.log(NEWCARD.innerHTML)
+     window.location.href ='#'
    }
  
  });
- 
 
- //-----Files [Weather]-----//
+//-----Files [Weather]-----//
 function getWeather(nameCity, parameters,  weather, icon, temp, humid){
 
   //---NAME CITY---//
@@ -368,7 +410,7 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
         const abstract = item.description;
         const code = item.icon;     
         result.innerHTML = abstract.toUpperCase();
-        image.setAttribute("src", `http://openweathermap.org/img/wn/${code}@2x.png`);
+        image.setAttribute("src", `http://openweathermap.org/img/wn/${code}@2x.png`);  
         image.style.width = '120px'
         image.style.height = '120px'       
       }   
@@ -418,7 +460,6 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
 };
 
 //-----Clock-----//
-
 function m(){
 var date = new Date();
 var hours = date.getHours();
