@@ -1,6 +1,7 @@
 //-----Catch Components-----//
 window.addEventListener('DOMContentLoaded',m);
 const btn = document.getElementById('btn');
+const CloseSettings = document.getElementById('closeSettings');
 const BoxTop = document.getElementById('boxTop');
 const SelectCity = document.getElementById('selectCity');
 const LanguageSelect = document.getElementById('Language');
@@ -30,15 +31,19 @@ const Bogota = document.getElementById('bogota');
 const Lyon = document.getElementById('lyon');
 const Paris = document.getElementById('paris');
 const Quebec = document.getElementById('quebec');
-//--------------------------------------------------//
+const CountryInput = document.getElementById('countryInput');
+const CityInput = document.getElementById('cityInput');
+const AddNewCity = document.getElementById('addNewCity');
+const NEWCARD = document.getElementById("NEWCARD"); 
 
+//--------------------------------------------------//
 
 //-----select-----//
 function select(Dir){  
   
   if(SelectCity.value === 'bogotá'){    
     Dir = `http://api.openweathermap.org/data/2.5/weather?q=Bogota,co`
-    BoxTop.style.backgroundImage = 'url(img/bogota.jpg)';
+    BoxTop.style.backgroundImage = 'url(img/bogota.jpeg)';
     bigNameCTY.style.color = '  rgb(197, 168, 4)';
 
   }
@@ -101,7 +106,7 @@ LanguageSelect.addEventListener('change', () =>{
 })
 
 //-----Reload-----//
-if(location.pathname){
+if(location.pathname){    
   let urlTop = `http://api.openweathermap.org/data/2.5/weather?q=Bogota,co`;
   let urlLyon = `http://api.openweathermap.org/data/2.5/weather?q=Lyon,fr`;
   let urlParis = `http://api.openweathermap.org/data/2.5/weather?q=Paris,fr`; 
@@ -109,8 +114,7 @@ if(location.pathname){
   select(urlTop);    
   select(urlLyon);
   select(urlParis);
-  select(urlQuebec);
-  
+  select(urlQuebec);  
   getWeather(NameCT1, urlTop,  divBogota, iconWeather, Temp1, HumidCity1);
   getWeather(NameCT2, urlLyon,  divLyon, iconWeather2, Temp2, HumidCity2);
   getWeather(NameCT3, urlParis,  divParis, iconWeather3, Temp3, HumidCity3);
@@ -124,7 +128,7 @@ SelectCity.addEventListener('mouseout', function(){
   
   if(SelectCity.value === 'bogotá'){    
     urlTop = `http://api.openweathermap.org/data/2.5/weather?q=Bogota,co`
-    BoxTop.style.backgroundImage = 'url(img/bogota.jpg)';
+    BoxTop.style.backgroundImage = 'url(img/bogota.jpeg)';
     bigNameCTY.style.color = '  rgb(197, 168, 4)';
 
   }
@@ -218,12 +222,10 @@ Bogota.addEventListener('mouseover', function(){
   Bogota.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
   
 });
-
 Bogota.addEventListener('mouseout', function(){  
 
   Bogota.style.boxShadow = ''
 });
-
 //-----Lyon-----//
 Lyon.addEventListener('mouseover', function(){
     Lyon.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)'
@@ -247,7 +249,88 @@ Quebec.addEventListener('mouseout', function(){
 });
 
 
-//-----Files [Weather]-----//
+//-------------[NEW CITY]------------//
+AddNewCity.addEventListener('click', function() {
+
+  //----------Input values-----------// 
+   var country = CountryInput.value;
+   var fullCountry = country[0].toUpperCase() + country.slice(1)
+   var city = CityInput.value;  
+   //---------------------// 
+   var countryName = country[0].toLowerCase() + country[1].toLowerCase(); 
+   var cityName =  city[0].toUpperCase() + city.slice(1);   
+   var newUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryName}`;
+   
+    
+ 
+    
+    window.location.href ='#'
+    
+    
+     var nameContainer = `div${cityName}`;
+     var tempContainer = `temp${cityName}`;
+     var iconWeatherContainer = `iconWeather${cityName}`;  
+     var humidityContainer = `humidity${cityName}`;
+  
+     console.log(newUrl)
+    
+    //Create input
+      
+   
+ 
+    NEWCARD.innerHTML=`<div class="flip-card-container" id="${cityName}" style="--hue: 350">
+     <div class="flip-card">
+   
+       <div class="card-back">
+         <figure>
+           <div class="img-bg"></div>
+           <img src="img/quebec2.jpg">
+           <figcaption><i class="fas fa-map-marker-alt" ></i> ${cityName} - ${fullCountry}</figcaption>
+         </figure>
+   
+         <img src="" id="${iconWeatherContainer}">
+         <ul>        
+           <li id="${nameContainer}"></li>
+           <li id="${tempContainer}"></li>
+           <li id="${humidityContainer}"></li>
+         </ul>
+       </div>
+   
+       <div class="card-front">
+         <!-- only if the image is necessary -->
+         <figure>
+           <div class="img-bg"></div>
+           <img src="img/quebec.jpg">
+         </figure>
+   
+         <button id="${cityName}"></button>
+   
+         <!-- can add svg here and remove these eight spans -->
+         <div class="design-container">
+           <span class="design design--1"></span>
+           <span class="design design--2"></span>
+           <span class="design design--3"></span>
+           <span class="design design--4"></span>
+           <span class="design design--5"></span>
+           <span class="design design--6"></span>
+           <span class="design design--7"></span>
+           <span class="design design--8"></span>
+         </div>
+       </div>
+   
+     </div>
+   </div>`
+   
+ 
+   if(NEWCARD.innerHTML != ''){
+     //getWeather(cityName, newUrl, nameContainer, iconWeatherContainer, tempContainer, humidityContainer);
+     console.log(NEWCARD.innerHTML)
+   }
+ 
+ });
+ 
+
+ //-----Files [Weather]-----//
 function getWeather(nameCity, parameters,  weather, icon, temp, humid){
 
   //---NAME CITY---//
@@ -288,7 +371,7 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
         image.setAttribute("src", `http://openweathermap.org/img/wn/${code}@2x.png`);
         image.style.width = '120px'
         image.style.height = '120px'       
-      }      
+      }   
      
       if(LanguageSelect.value === '&lang=es'){
         //Temperature 
@@ -298,6 +381,15 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
         //Humidity 
         const humidity = files.main.humidity;
         humidCity.innerHTML = 'Humedad: ' + humidity + '%';
+       
+        //Settings
+       textS1.innerHTML = ' Preferencias';   
+       textS2.innerHTML = ' Cambiar idioma';   
+       textS3.innerHTML = 'Español';   
+       textS4.innerHTML = 'Francés';   
+       textS5.innerHTML = ' Agregar ciudad';  
+       CountryInput.placeholder='País'
+       CityInput.placeholder = 'Ciudad' 
       
       }
       if(LanguageSelect.value === '&lang=fr'){
@@ -307,7 +399,16 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
 
         //Humidity 
         const humidity = files.main.humidity;
-        humidCity.innerHTML = 'Humidité: ' + humidity + '%';      
+        humidCity.innerHTML = 'Humidité: ' + humidity + '%'; 
+
+        //Settings
+        textS1.innerHTML = ' Préférences';   
+        textS2.innerHTML = ' Changer la langue';   
+        textS3.innerHTML = 'Espagnol';   
+        textS4.innerHTML = 'Français';   
+        textS5.innerHTML = ' Ajouter une ville';  
+        CountryInput.placeholder='Pays'
+        CityInput.placeholder = 'Ville' 
       }
      
                     
@@ -333,3 +434,4 @@ function checkNumber(number){
   return number;
 }
  setInterval(m,500);
+

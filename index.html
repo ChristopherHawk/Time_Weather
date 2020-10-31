@@ -3,7 +3,7 @@
 <!-- My Css -->
 <link rel="stylesheet" href="index.css">
 <!-- Favicon -->
-<link  rel="icon"   href="img\sol.png" type="image/png" />
+<link  rel="icon" href="img\sol.png" type="image/png" />
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/55bc13bee3.js" crossorigin="anonymous"></script>
 <!-- Google Font Inconsolata -->
@@ -14,16 +14,11 @@
 <!-- [Top container] -->
 <div class="box" id="boxTop">
 
+    <!-- Preferences -->
+    <a id="preferences" href="#settings"><i class="fas fa-cogs"></i></a>
+    
     <!-- Clock -->
-    <div id="clockContainer" ><i class="far fa-clock" id="clockIcon"></i><p id="clock"></p></div>
-    <!-- Big Name City -->
-    <div id="containerNameCity" > <p id="bigNameCTY"></p> </div>
-    <!-- Idiom [Select] -->
-    <div class="select" id="idiom">
-      <select  id="Language">
-      <option value="&lang=es">Español</option>
-      <option value="&lang=fr">Francés</option>      
-    </select></div>    
+    <div id="clockContainer" ><i class="far fa-clock" id="clockIcon"><p id="bigNameCTY"></p></i><p id="clock"></p></div>
     <!-- Bogotá [flip-card-container] -->
     <div class="flip-card-container" id="bogota" style="--hue: 220">
       <!-- Bogotá -->
@@ -188,7 +183,33 @@
   </div>
 </div>
 
-
+<!--  [New Cities] -->
+<div id="NEWCARD"></div>
+<!--  [Settings] -->
+<div id="settings">
+  <div id="modalSettings">
+    <a id="closeSettings" href="#"><i class="fas fa-times-circle"></i></a>
+    <!-- Title -->
+    <h1><i class="fas fa-cogs" id="textS1"></i></h1>
+    <br/>
+    <br/>
+    <h3><i class="fas fa-book"id="textS2"></i></h3>
+     <!-- Idiom [Select] -->
+     <div class="select" id="idiom">
+      <select  id="Language">
+      <option value="&lang=es" id="textS3"></option>
+      <option value="&lang=fr"id="textS4"></option>      
+    </select></div>  
+    <br/>
+    <h3><i class="fas fa-city" id="textS5"></i></h3>
+    <div id="formCity">
+        <input id="countryInput" type="text" placeholder="">
+        <input id="cityInput" type="text" placeholder="">
+        <button id="addNewCity"><i class="fas fa-plus-circle"></i></button> 
+    </div>
+  </div>  
+</div>
 
 <!-- My Javascript -->
 <script src="index.js"></script>
+<script src="pruebas.js"></script>
