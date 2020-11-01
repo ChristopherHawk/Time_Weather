@@ -25,6 +25,10 @@ const HumidCity1 = document.getElementById('humidity1');
 const HumidCity2 = document.getElementById('humidity2');
 const HumidCity3 = document.getElementById('humidity3');
 const HumidCity4 = document.getElementById('humidity4');
+const Wind1 = document.getElementById('wind1');
+const Wind2 = document.getElementById('wind2');
+const Wind3 = document.getElementById('wind3');
+const Wind4 = document.getElementById('wind4');
 const divBogota = document.getElementById('divBogota');
 const divLyon = document.getElementById('divLyon');
 const divParis = document.getElementById('divParis');
@@ -99,10 +103,10 @@ LanguageSelect.addEventListener('change', () =>{
   select(urlParis);
   select(urlQuebec);
   
-  getWeather(NameCT1, urlTop,  divBogota, iconWeather, Temp1, HumidCity1);
-  getWeather(NameCT2, urlLyon,  divLyon, iconWeather2, Temp2, HumidCity2);
-  getWeather(NameCT3, urlParis,  divParis, iconWeather3, Temp3, HumidCity3);
-  getWeather(NameCT4, urlQuebec, divQuebec, iconWeather4, Temp4, HumidCity4);
+  getWeather(NameCT1, urlTop,  divBogota, iconWeather, Temp1, HumidCity1, Wind1);
+  getWeather(NameCT2, urlLyon,  divLyon, iconWeather2, Temp2, HumidCity2, Wind4);
+  getWeather(NameCT3, urlParis,  divParis, iconWeather3, Temp3, HumidCity3, Wind3);
+  getWeather(NameCT4, urlQuebec, divQuebec, iconWeather4, Temp4, HumidCity4, Wind4);
   bigNameCTY.innerHTML = SelectCity.value.toUpperCase();
 
 });
@@ -117,10 +121,10 @@ if(location.pathname){
   select(urlLyon);
   select(urlParis);
   select(urlQuebec);  
-  getWeather(NameCT1, urlTop,  divBogota, iconWeather, Temp1, HumidCity1);
-  getWeather(NameCT2, urlLyon,  divLyon, iconWeather2, Temp2, HumidCity2);
-  getWeather(NameCT3, urlParis,  divParis, iconWeather3, Temp3, HumidCity3);
-  getWeather(NameCT4, urlQuebec, divQuebec, iconWeather4, Temp4, HumidCity4);
+  getWeather(NameCT1, urlTop,  divBogota, iconWeather, Temp1, HumidCity1, Wind1);
+  getWeather(NameCT2, urlLyon,  divLyon, iconWeather2, Temp2, HumidCity2, Wind2);
+  getWeather(NameCT3, urlParis,  divParis, iconWeather3, Temp3, HumidCity3, Wind3);
+  getWeather(NameCT4, urlQuebec, divQuebec, iconWeather4, Temp4, HumidCity4, Wind4);
   bigNameCTY.innerHTML = SelectCity.value.toUpperCase();
 
 }
@@ -173,7 +177,7 @@ SelectCity.addEventListener('change', function(){
   Bogota.style.boxShadow = 'inset 0 0 2px 1px rgba(255, 255, 255, 0.1), 0px 2px 13px 0px rgb(0, 195, 255)';
   bigNameCTY.innerHTML = SelectCity.value.toUpperCase();
    
-  getWeather(NameCT1, urlTop, divBogota, iconWeather, Temp1, HumidCity1);
+  getWeather(NameCT1, urlTop, divBogota, iconWeather, Temp1, HumidCity1, Wind1);
   
 });
 
@@ -398,7 +402,7 @@ AddNewCity.addEventListener('click', function() {
  });
 
 //-----Files [Weather]-----//
-function getWeather(nameCity, parameters,  weather, icon, temp, humid){
+function getWeather(nameCity, parameters,  weather, icon, temp, humid, windCity){
 
   //---NAME CITY---//
   let Name_City = nameCity;
@@ -416,6 +420,8 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
   let tempCity = temp
   //---HUMIDITY---//
   let humidCity = humid
+   //---WIND---//
+   let wind = windCity;
 
   const api =  new XMLHttpRequest();
   api.open('GET', url, true);
@@ -443,11 +449,14 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
       if(LanguageSelect.value === '&lang=es'){
         //Temperature 
         const temperature = files.main.temp;
-        tempCity.innerHTML = 'Temperatura: ' + temperature + ' K';
+        tempCity.innerHTML = `Temperatura: ${temperature} K`;
 
         //Humidity 
         const humidity = files.main.humidity;
-        humidCity.innerHTML = 'Humedad: ' + humidity + '%';
+        humidCity.innerHTML = `Humedad: ${humidity} %`;
+         //Wind
+         const windDate =  files.wind.speed; 
+         wind.innerHTML = `Viento: ${windDate} km/h` 
        
         //Settings
        textS1.innerHTML = ' Preferencias';   
@@ -464,11 +473,15 @@ function getWeather(nameCity, parameters,  weather, icon, temp, humid){
       if(LanguageSelect.value === '&lang=fr'){
         //Temperature 
         const temperature = files.main.temp;
-        tempCity.innerHTML = 'Température: ' + temperature + ' K';
+        tempCity.innerHTML = `Température: ${temperature} K`;
 
         //Humidity 
         const humidity = files.main.humidity;
-        humidCity.innerHTML = 'Humidité: ' + humidity + '%'; 
+        humidCity.innerHTML = `Humidité: ${humidity} %`;
+
+          //Wind
+          const windDate =  files.wind.speed; 
+          wind.innerHTML = `Vent: ${windDate} km/h` 
 
         //Settings
         textS1.innerHTML = ' Préférences';   
